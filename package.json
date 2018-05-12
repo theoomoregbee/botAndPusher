@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build –prod --base-href='/botAndPusher/' && cp ./dist/index.html ./dist/404.html && ./node_modules/.bin/angular-cli-ghpages –no-silent"
+    "deploy": "ng build --prod --base-href='/botAndPusher/' && cp ./dist/botAndPusher/index.html ./dist/botAndPusher/404.html && ./node_modules/.bin/angular-cli-ghpages –no-silent"
   },
   "private": true,
   "dependencies": {
