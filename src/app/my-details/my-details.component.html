@@ -1,0 +1,16 @@
+<h6 class="pb-2 mb-0">My Details</h6>
+
+<form [formGroup]="detailsForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="form-group">
+    <label for="name">Display Name</label>
+    <input formControlName="displayName" type="text" class="form-control" id="name" placeholder="Alien">
+     <small *ngIf="detailsForm.get('displayName').hasError('required')" class="form-text text-danger">Display name is required.</small>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input formControlName="email" type="email" class="form-control" id="email" placeholder="test@example.com">
+    <small *ngIf="detailsForm.get('email').hasError('required')" class="form-text text-danger">Email is required.</small>
+    <small *ngIf="detailsForm.get('email').hasError('email')" class="form-text text-danger">Email is invalid.</small>
+  </div>
+  <button type="submit" [disabled]="loader || detailsForm.invalid" class="btn btn-primary">{{loader?'Joining':'Join Group'}}</button>
+</form>

@@ -32,4 +32,11 @@ app.post('/message', (req, res) => {
   res.send(chat)
 })
 
+app.post('/join', (req, res) => {
+  console.log('play around', req.body)
+  // trigger this update to our pushers listeners
+  pusher.trigger('chat-group', 'join', req.body)
+  res.send(req.body)
+})
+
 app.listen(process.env.PORT || 2000, () => console.log('Listening at 2000'))
