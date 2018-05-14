@@ -7,14 +7,14 @@
       <div class="message sent" *ngIf="chat.type==='human' && chat.isMe">
         {{chat.message}}
         <span class="metadata">
-          <span class="time">{{createdAt | date: 'HH:mm aaa'}}</span>
+          <span class="time">{{chat.createdAt | date: 'HH:mm aaa'}}</span>
         </span>
       </div>
       <div class="message received"  *ngIf="chat.type==='human' && !chat.isMe">
         <strong>{{chat.displayName}}</strong> <br>
         {{chat.message}}
         <span class="metadata">
-          <span class="time">{{createdAt | date: 'HH:mm aaa'}}</span>
+          <span class="time">{{chat.createdAt | date: 'HH:mm aaa'}}</span>
         </span>
       </div>
       <p align="center" class="joined"  *ngIf="chat.type==='joined'">
