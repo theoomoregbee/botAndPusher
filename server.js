@@ -22,21 +22,26 @@ const pusher = new Pusher({
 app.post('/message', (req, res) => {
   // simulate actual db save with id and createdAt added
   const chat = {
+    ...req.body,
     id: shortId.generate(),
-    createdAt: new Date().toISOString(),
-    ...req.body
+    createdAt: new Date().toISOString()
   }
   mocks.push(chat) // like our db
   // trigger this update to our pushers listeners
-  pusher.trigger('chat-group', 'new', chat)
+  pusher.trigger('chat-group', 'chat', chat)
   res.send(chat)
 })
 
 app.post('/join', (req, res) => {
-  console.log('play around', req.body)
+  const chat = {
+    ...req.body,
+    id: shortId.generate(),
+    type: 'join',
+    createdAt: new Date().toISOString()
+  }
   // trigger this update to our pushers listeners
-  pusher.trigger('chat-group', 'join', req.body)
-  res.send(req.body)
+  pusher.trigger('chat-group', 'chat', chat)
+  res.send(chat)
 })
 
 app.listen(process.env.PORT || 2000, () => console.log('Listening at 2000'))

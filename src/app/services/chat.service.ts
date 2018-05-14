@@ -13,7 +13,7 @@ export class ChatService {
   private _channel: any;
 
   constructor(private _pusherService: PusherService, private _http: HttpClient) {
-    this._channel = this._pusherService.getPusher().subscribe('chat');
+    this._channel = this._pusherService.getPusher().subscribe('chat-group');
   }
 
   join(param): Observable<any> {
@@ -21,5 +21,9 @@ export class ChatService {
     .pipe(tap(data => {
       this.user = param;
     }));
+  }
+
+  getChannel() {
+    return this._channel;
   }
 }
