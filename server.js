@@ -36,7 +36,7 @@ app.post('/join', (req, res) => {
   const chat = {
     ...req.body,
     id: shortId.generate(),
-    type: 'join',
+    type: 'joined',
     createdAt: new Date().toISOString()
   }
   // trigger this update to our pushers listeners

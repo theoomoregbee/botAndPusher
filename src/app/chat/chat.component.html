@@ -1,17 +1,30 @@
 <h6 class="pb-2 mb-0">Group Chat <button class="btn btn-sm btn-primary">invite others</button></h6>
 
+
 <div class="chats">
-  <div class="message sent">
-    What happened last night?
-    <span class="metadata">
-      <span class="time">09: 00 AM</span>
-    </span>
-  </div>
-  <div class="message received">
-    What happened last night?
-    <span class="metadata">
-      <span class="time">01:09 AM</span>
-    </span>
+  <div class="chatbox">
+    <div *ngFor="let chat of chats">
+      <div class="message sent" *ngIf="chat.type==='human' && chat.isMe">
+        {{chat.message}}
+        <span class="metadata">
+          <span class="time">{{createdAt | date: 'HH:mm aaa'}}</span>
+        </span>
+      </div>
+      <div class="message received"  *ngIf="chat.type==='human' && !chat.isMe">
+        <strong>{{chat.displayName}}</strong> <br>
+        {{chat.message}}
+        <span class="metadata">
+          <span class="time">{{createdAt | date: 'HH:mm aaa'}}</span>
+        </span>
+      </div>
+      <p align="center" class="joined"  *ngIf="chat.type==='joined'">
+      <span class="rounded">{{chat.displayName}} Joined</span>
+      </p>
+    </div>
   </div>
 
+  <div class="d-flex flex-row">
+    <input [(ngModel)]="message" type="text" class="form-control" placeholder="Enter message" style="margin-right: 10px">
+    <button [disabled]="!message || sending" (click)="sendMessage(message)" class="btn btn-primary"> {{sending ? 'Sending' : 'Send'}}</button>
+  </div>
 </div>

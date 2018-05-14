@@ -23,6 +23,15 @@ export class ChatService {
     }));
   }
 
+  sendMessage(message: string): Observable<any> {
+    const param = {
+      message,
+      type: 'human',
+      ...this.user
+    };
+    return this._http.post(`${this._endPoint}/message`, param);
+  }
+
   getChannel() {
     return this._channel;
   }

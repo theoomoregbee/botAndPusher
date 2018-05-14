@@ -1,7 +1,28 @@
 .chats {
-
+    height: calc(100% - 12px);
+    position: relative;
+    z-index: 0;
 }
 
+.chats .chatbox {
+    height: calc(100% - 68px);
+    overflow-x: hidden;
+    padding: 0 16px;
+    margin-bottom: 5px;
+}
+
+.joined {
+  color: #000;
+  clear: both;
+  line-height: 18px;
+  font-size: 15px;
+  margin: 8px 0;
+  padding: 8px;
+}
+.joined span {
+  background: #c5e4ead9;
+  padding: 5px
+}
 /* Messages : https://codepen.io/zenorocha/pen/eZxYOK*/
 
 .message {
@@ -39,37 +60,21 @@
   display: inline-block;
 }
 
-.metadata .tick {
-  display: inline-block;
-  margin-left: 2px;
-  position: relative;
-  top: 4px;
-  height: 16px;
-  width: 16px;
-}
-
-.metadata .tick svg {
-  position: absolute;
-  transition: .5s ease-in-out;
-}
 
 .message:first-child {
   margin: 16px 0 8px;
 }
 
 .message.received {
-  background: #fff;
+  background: #ccc;
   border-radius: 0px 5px 5px 5px;
   float: left;
 }
 
-.message.received .metadata {
-  padding: 0 0 0 16px;
-}
 
 .message.received:after {
   border-width: 0px 10px 10px 0;
-  border-color: transparent #fff transparent transparent;
+  border-color: transparent #ccc transparent transparent;
   top: 0;
   left: -10px;
 }
@@ -86,6 +91,7 @@
   top: 0;
   right: -10px;
 }
+
 
 .metadata {
   display: inline-block;
