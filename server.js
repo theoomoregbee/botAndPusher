@@ -36,7 +36,9 @@ app.post('/message', async (req, res) => {
     const message = chat.message.split('/bot')[1]
     const response = await dialogFlow.send(message)
     pusher.trigger('chat-group', 'chat', {
-      message: response.data.result.fulfillment.speech,
+      message: `@${chat.displayName} ${
+        response.data.result.fulfillment.speech
+      }`,
       displayName: 'Bot User',
       email: 'bot@we.com',
       createdAt: new Date().toISOString(),
