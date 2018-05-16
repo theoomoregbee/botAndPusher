@@ -5,6 +5,7 @@ const cors = require('cors')
 require('dotenv').config()
 const shortId = require('shortid')
 let mocks = require('./mocks')
+const dialogFlow = require('./dialogFlow')
 
 const app = express()
 app.use(cors())
@@ -19,7 +20,7 @@ const pusher = new Pusher({
   encrypted: true
 })
 
-app.post('/message', (req, res) => {
+app.post('/message', async (req, res) => {
   // simulate actual db save with id and createdAt added
   const chat = {
     ...req.body,
@@ -29,6 +30,20 @@ app.post('/message', (req, res) => {
   mocks.push(chat) // like our db
   // trigger this update to our pushers listeners
   pusher.trigger('chat-group', 'chat', chat)
+
+  // check if this message was invoking our bot, /botUser
+  if (chat.message.startsWith('/bot')) {
+    const message = chat.message.split('/bot')[1]
+    const response = await dialogFlow.send(message)
+    pusher.trigger('chat-group', 'chat', {
+      message: response.data.result.fulfillment.speech,
+      displayName: 'Bot User',
+      email: 'bot@we.com',
+      createdAt: new Date().toISOString(),
+      id: shortId.generate()
+    })
+  }
+
   res.send(chat)
 })
 

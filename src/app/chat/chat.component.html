@@ -4,13 +4,13 @@
 <div class="chats">
   <div class="chatbox">
     <div *ngFor="let chat of chats">
-      <div class="message sent" *ngIf="chat.type==='human' && chat.isMe">
+      <div class="message sent" *ngIf="chat.type!=='joined' && chat.isMe">
         {{chat.message}}
         <span class="metadata">
           <span class="time">{{chat.createdAt | date: 'HH:mm aaa'}}</span>
         </span>
       </div>
-      <div class="message received"  *ngIf="chat.type==='human' && !chat.isMe">
+      <div class="message received"  *ngIf="chat.type!=='joined' && !chat.isMe">
         <strong>{{chat.displayName}}</strong> <br>
         {{chat.message}}
         <span class="metadata">
