@@ -31,7 +31,7 @@ app.post('/message', async (req, res) => {
   // trigger this update to our pushers listeners
   pusher.trigger('chat-group', 'chat', chat)
 
-  // check if this message was invoking our bot, /botUser
+  // check if this message was invoking our bot, /bot
   if (chat.message.startsWith('/bot')) {
     const message = chat.message.split('/bot')[1]
     const response = await dialogFlow.send(message)

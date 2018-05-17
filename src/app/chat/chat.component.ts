@@ -20,7 +20,6 @@ export class ChatComponent implements OnInit {
       if (data.email === this._chatService.user.email) {
         data.isMe = true;
       }
-      console.log('data', data);
       this.chats.push(data);
     });
   }
