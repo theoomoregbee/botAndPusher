@@ -4,7 +4,6 @@ const Pusher = require('pusher')
 const cors = require('cors')
 require('dotenv').config()
 const shortId = require('shortid')
-let mocks = require('./mocks')
 const dialogFlow = require('./dialogFlow')
 
 const app = express()
@@ -27,7 +26,6 @@ app.post('/message', async (req, res) => {
     id: shortId.generate(),
     createdAt: new Date().toISOString()
   }
-  mocks.push(chat) // like our db
   // trigger this update to our pushers listeners
   pusher.trigger('chat-group', 'chat', chat)
 
