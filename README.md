@@ -15,6 +15,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Development server
 
+* Update [pusher.service.ts](https://github.com/theo4u/botAndPusher/blob/master/src/app/services/pusher.service.ts) to use your own `APP_KEY`
 * Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 * Run `npm run server` it follows [Twelve-Factor](https://12factor.net/) for handling environment variables listed below
   * `PUSHER_APP_ID`
