@@ -8,7 +8,7 @@ export class PusherService {
 private _pusher: any;
 
 constructor() {
-  this._pusher = new Pusher('8b80c72e54c8883d8baa', {
+  this._pusher = new Pusher('APP_KEY', {
     cluster: 'eu',
     encrypted: true
   });
