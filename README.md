@@ -2,6 +2,8 @@
 
 Demonstrating how to build a group chat using [Pusher](https://pusher.com/) with an Angular application. Also build a basic chatbot using the [Dialogflow](https://dialogflow.com) conversation platform formerly know as api.ai by Google.
 
+[View tutorial](https://pusher.com/tutorials/group-chat-angular-dialogflow)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
